@@ -1,15 +1,29 @@
 export default function pageLoad() {
-    const cafeName = document.createElement('h1');
-    cafeName.innerHTML = "Café Obscura"
-
-    const headline = document.createElement('h3');
-    headline.innerHTML = "Discover the Dark Side of Coffee";
-
+    const introDiv = document.createElement('div');
+    const cafeNameDiv = document.createElement('div');
+    const cafeName = document.createElement('p');
+    const headline = document.createElement('p');
     const subText = document.createElement('p');
-    subText.innerHTML = "Where every sip is a journey through bold flavors and rich aromas."
+    const line = document.createElement('hr');
 
     const homePage = document.querySelector('#homePage');
-    homePage.appendChild(cafeName);
-    homePage.appendChild(headline);
-    homePage.appendChild(subText);
+
+    cafeName.id = "cafeName"
+    introDiv.id = "introDiv"
+    cafeNameDiv.id = "cafeNameDiv"
+    headline.id = "headline"
+    subText.id = "subText"
+
+    headline.innerHTML = "Discover the Dark Side of Coffee";
+    cafeName.innerHTML = "Café Obscura"
+    subText.innerHTML = "Where every sip is a journey through bold flavors and rich aromas."
+
+    cafeNameDiv.appendChild(cafeName);
+    cafeNameDiv.appendChild(line);
+
+    introDiv.appendChild(headline);
+    introDiv.appendChild(subText);
+    homePage.appendChild(cafeNameDiv);
+    homePage.appendChild(line);
+    homePage.appendChild(introDiv);
 }

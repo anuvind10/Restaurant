@@ -9,6 +9,25 @@
     margin: 0;
 }
 
+@font-face {
+    font-family: 'Baloo2';
+    src: url('./fonts/Baloo_2/static/Baloo2-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./fonts/Poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'PoppinsItalic';
+    src: url('./fonts/Poppins/Poppins-Italic.ttf');
+}
+
+:root {
+    --theme-color: #b86849;
+}
+
 body {
     background-size: cover;
     background-position: center;
@@ -21,7 +40,7 @@ body::before {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.55);
     z-index: -1;
 }
 
@@ -29,8 +48,35 @@ h1, h3, p {
     color: white;
 }
 
+#cafeNameDiv {
+    position: relative;
+}
+
+hr {
+    position: fixed;
+    top: 50%;
+    border: none;
+    width: 400px;
+    padding: 1px 0;
+    background-color: var(--theme-color);
+}
+
+#cafeName {
+    font-family: 'Baloo2';
+    font-size: 100px;
+}
+
+#headline {
+    font-family: 'Poppins';
+    font-size: 20px;
+}
+
+#subText {
+    font-family: 'PoppinsItalic';
+}
+
 nav {
-    height: 20vh;
+    height: 30vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -41,16 +87,68 @@ nav {
 .btn {
     border: none;
     background: transparent;
-    color: white;
-    font-size: 20px;
+    letter-spacing: 0;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size:16px;
+    font-weight: 400;
+    line-height: 35px;
+    margin: 0 0 2em;
+    max-width: 100px; 
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+
+    @media(min-width: 600px) {
+        margin: 0 1em 2em;
+      }
+      &:hover { 
+        text-decoration: none; 
+    }
+}
+
+.btn:hover,
+.btn:active {
+    color: var(--theme-color);
+    letter-spacing: 5px;
+}
+
+.btn:after,
+.btn:before {
+  backface-visibility: hidden;
+  border: 1px solid #b8694900;
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width: 0;
+  transition: width 350ms ease-in-out;
+}
+
+.btn:hover:after,
+.btn:hover:before {
+  backface-visibility: hidden;
+  border: 1px solid #b8694971;
+  transition: width 350ms ease-in-out;
+  width: 100%;
 }
 
 #homePage {
+    position: fixed;
+    top: 35%;
     height: 70vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
+
+#introDiv {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
+    align-items: center;
 }
