@@ -1,4 +1,4 @@
-export default function pageLoad() {
+export default function pageLoad(content) {
     const introDiv = document.createElement('div');
     const cafeNameDiv = document.createElement('div');
     const cafeName = document.createElement('p');
@@ -6,8 +6,9 @@ export default function pageLoad() {
     const subText = document.createElement('p');
     const line = document.createElement('hr');
 
-    const homePage = document.querySelector('#homePage');
-
+    const homePage = document.createElement('div');
+    
+    homePage.id = "homePage"
     cafeName.id = "cafeName"
     introDiv.id = "introDiv"
     cafeNameDiv.id = "cafeNameDiv"
@@ -25,5 +26,8 @@ export default function pageLoad() {
     introDiv.appendChild(subText);
     homePage.appendChild(cafeNameDiv);
     homePage.appendChild(line);
-    homePage.appendChild(introDiv);
+    homePage.appendChild(introDiv); 
+
+    content.appendChild(homePage);
+
 }
