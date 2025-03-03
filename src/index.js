@@ -11,22 +11,19 @@ function pageLoad() {
     const menuBtn = document.querySelector('#menu');
     const aboutBtn = document.querySelector('#about');
     const content = document.querySelector('#content');
+    
+    function loadPage(loadFunction) {
+        content.classList.add('hidden');
+        setTimeout(() => {
+            content.innerHTML = '';
+            loadFunction(content);
+            content.classList.remove('hidden');
+        }, 500); // Match the duration of the CSS transition
+    }
 
-    homeBtn.addEventListener('click', ()  => {
-        content.innerHTML = "";
-        loadHome(content);
-    });
-
-    menuBtn.addEventListener('click', () => {
-        content.innerHTML = "";
-        loadMenu(content);
-    }); 
-
-    aboutBtn.addEventListener('click', () => {
-        content.innerHTML = "";
-        loadAbout(content);
-    });
-
+    homeBtn.addEventListener('click', () => loadPage(loadHome));
+    menuBtn.addEventListener('click', () => loadPage(loadMenu));
+    aboutBtn.addEventListener('click', () => loadPage(loadAbout));
     loadHome(content)
 }
 
