@@ -25,7 +25,6 @@ export default function pageLoad(content) {
     introDiv.appendChild(headline);
     introDiv.appendChild(subText);
     homePage.appendChild(cafeNameDiv);
-    homePage.appendChild(line);
     homePage.appendChild(introDiv); 
 
     content.appendChild(homePage);

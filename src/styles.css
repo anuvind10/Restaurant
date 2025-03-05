@@ -50,7 +50,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0.6);
     z-index: -1;
 }
 
@@ -63,19 +63,26 @@ h1, h3, h4, p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
 }
 
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease-in-out;
+.blur-out {
+    animation: blur-out 0.4s ease-out both;
 }
 
-hr {
-    position: fixed;
-    top: 50%;
+.blur-in {
+    animation: blur-in 0.4s ease-in both;
+}
+
+#cafeNameDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#cafeNameDiv > hr {
+    position: relative;
+    top: -25px;
     border: none;
     width: 400px;
     padding: 1px 0;
@@ -134,10 +141,11 @@ nav {
 .btn:active {
     color: var(--theme-color);
     letter-spacing: 5px;
+    transition: letter-spacing 350ms ease-in-out;
 }
 
-.btn:after,
-.btn:before {
+.btn::after,
+.btn::before {
   backface-visibility: hidden;
   border: 1px solid #b8694900;
   bottom: 0px;
@@ -149,8 +157,8 @@ nav {
   transition: width 350ms ease-in-out;
 }
 
-.btn:hover:after,
-.btn:hover:before {
+.btn:hover::after,
+.btn:hover::before {
   backface-visibility: hidden;
   border: 1px solid #b8694971;
   transition: width 350ms ease-in-out;
@@ -212,27 +220,86 @@ nav {
     gap: 20px;
 }
 
-#menuItem {
+.menuItem {
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    padding: 15px 40px;
 }
 
-#menuItem > * {
-    font-family: 'poppins';
-}
-
-#menuItemName {
+.menuItemName {
     font-size: 20px;    
 }
 
 .menuItemDescription {
     font-family: 'PoppinsItalic';
+    font-size: 16px;    
 }
 
 .odd {
     text-align: left;
+    background-image: linear-gradient(to right, #b869491e, #00000000);
+    border-radius: 10px;
+    box-shadow: 20px 20px 50px black;
 }
 
 .even {
-    text-align: right;
+    text-align: left;
+    background-image: linear-gradient(to right, #b869491e, #00000000);
+    border-radius: 10px;
+    box-shadow: 20px 20px 50px black;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section > h3 {
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+.section > hr {
+    position: relative;
+    top: -38px;
+    left: 42px;
+    border: none;
+    width: 345px;
+    padding: 1px 0;
+    background-image: linear-gradient(to right, #b86949ad, #00000000)
+}
+
+#dessertDiv {
+    margin-bottom: 100px;
+}
+
+
+@keyframes blur-out {
+    from {
+        filter: blur(0);;
+        transform: scale(1);
+        opacity: 1;
+    }
+    
+    to {
+        filter: blur(20px);
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes blur-in {
+    from {
+        /* filter: blur(20px);;
+        transform: scale(1.2); */
+        opacity: 0;
+    }
+    
+    to {
+        /* filter: blur(0);
+        transform: scale(1); */
+        opacity: 1;
+    }
 }

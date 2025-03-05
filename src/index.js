@@ -13,12 +13,14 @@ function pageLoad() {
     const content = document.querySelector('#content');
     
     function loadPage(loadFunction) {
-        content.classList.add('hidden');
+        content.classList.add('blur-out');
+        content.innerHTML = '';
+        loadFunction(content);
+        content.classList.remove('blur-out');
+        content.classList.add('blur-in');
         setTimeout(() => {
-            content.innerHTML = '';
-            loadFunction(content);
-            content.classList.remove('hidden');
-        }, 500); // Match the duration of the CSS transition
+            content.classList.remove('blur-in');    
+        }, 400);
     }
 
     homeBtn.addEventListener('click', () => loadPage(loadHome));
